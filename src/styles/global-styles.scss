@@ -1,0 +1,19 @@
+// Import Partials
+@use "./reset" as *;
+@use "./variables" as *;
+@use "./typography" as *;
+
+body {
+  background: $light;
+}
+
+.App {
+  --ac-1: #{$ac-1};
+  --ac-2: #{$ac-2};
+  --ac-3: #{$ac-3};
+  --ac-4: #{$ac-4};
+  --ac-5: #{$ac-5};
+  --light: #{$light};
+  --dark: #{$dark};
+  min-height: 100vh;
+}

@@ -1,0 +1,13 @@
+@use '../../styles/mixins' as *;
+
+.header {
+  padding: 2rem;
+  display: flex;
+  .icon {
+    margin: 0 auto;
+    width: 20vw;
+    @include MQ(S,max){
+     width: 150px; 
+    }
+  }
+}

@@ -1,0 +1,63 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.slider {
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  @include MQ(M,max){
+    max-width: 65vw;
+  }
+}
+.slideList {
+  box-sizing: content-box;
+  display: flex;
+  justify-content: flex-start;
+  width: calc(100% - 2rem);
+  overflow: hidden;
+  position: relative;
+  padding: 2rem 0;
+  gap: 3.5%;
+}
+
+.btn {
+  position: absolute;
+  color: $dark;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  height: 5vh;
+  border-radius: 2rem;
+  transition: 0.25s;
+  background-color: unset;
+  opacity: 0.35;
+
+  &:disabled {
+    visibility: hidden;
+  }
+  &:hover {
+    opacity: 1;
+    cursor: none;
+  }
+  &.previousBtn {
+    left: -20px;
+  }
+  &.nextBtn {
+    right: -20px;
+  }
+}
+@for $i from 1 through 5 {
+  button.btn.ac#{$i} {
+    &:hover,
+    &:focus-within {
+      color: map-get($colors, $key: ac-#{$i});
+      background-color: scale-color($light, $lightness: 20%);
+      border-color: map-get($colors, $key: ac-#{$i});
+      &.previousBtn{box-shadow: 4px 2px 5px  map-get($colors, $key: ac-#{$i});}
+      &.nextBtn{box-shadow: -4px 2px 5px map-get($colors, $key: ac-#{$i});}
+    }
+  }
+}

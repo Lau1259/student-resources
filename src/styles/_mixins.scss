@@ -1,0 +1,17 @@
+@use './variables' as *;
+
+@mixin MQ($size, $opt: "min") {
+  @if $size == "S" {
+    @media screen and (#{$opt}-width: $S) {
+      @content;
+    }
+  } @else if $size == "M" {
+    @media screen and (#{$opt}-width: $L) {
+      @content;
+    }
+  } @else if $size == "L" {
+    @media screen and (#{$opt}-width: $L) {
+      @content;
+    }
+  }
+}

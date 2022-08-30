@@ -1,0 +1,33 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.footer {
+  display: grid;
+  grid-template-rows: auto;
+  align-items: center;
+  background-color: $dark;
+  color: $light;
+  margin-top: 2rem;
+  .logoContainer {
+    display: flex;
+    height: 15vh;
+    .logo {
+      display: block;
+      width: 20vh;
+      margin: 0 auto;
+      @include MQ(S, max) {
+        width: 100px;
+      }
+    }
+  }
+  .info {
+    display: flex;
+    justify-content: space-between;
+    background: scale-color($dark, $lightness: 30%, $alpha: 100%);
+    padding: 0.75em 3%;
+    p {
+      font-weight: $f-regular;
+      font-size: 1.2rem;
+    }
+  }
+}

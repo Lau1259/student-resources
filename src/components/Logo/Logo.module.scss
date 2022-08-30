@@ -1,0 +1,52 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.ac1 {
+  fill: $ac-1;
+}
+.ac2 {
+  fill: $ac-2;
+}
+.ac3 {
+  fill: $ac-3;
+}
+.ac4 {
+  fill: $ac-4;
+}
+.ac5 {
+  fill: $ac-5;
+}
+.light {
+  fill: $light;
+}
+.rainbow {
+  animation: rainbow 5s infinite;
+}
+
+.dropshadow{
+  filter: drop-shadow(1px 3px 2px scale-color($dark, $alpha: -75%));
+}
+
+@keyframes rainbow {
+  0% {
+    fill: $dark;
+  }
+  18% {
+    fill: $ac-1;
+  }
+  36% {
+    fill: $ac-2;
+  }
+  54% {
+    fill: $ac-3;
+  }
+  72% {
+    fill: $ac-4;
+  }
+  90% {
+    fill: $ac-5;
+  }
+  100% {
+    fill: $dark;
+  }
+}

@@ -1,0 +1,55 @@
+@use "../../styles/variables" as *;
+.twoStory {
+  min-width: 30%;
+  transition: transform 0.75s ease-in-out;
+  position: relative;
+  .top {
+    width: 100%;
+    height: 30%;
+    background: $light;
+    place-items: center;
+    display: grid;
+    .title {
+      margin: 0 auto;
+      display: flex;
+      font-weight: 900;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .bottom {
+    width: 100%;
+    height: 70%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    content: "";
+  }
+}
+
+.isEven {
+  .top {
+    height: 40%;
+  }
+  .bottom {
+    height: 60%;
+  }
+}
+
+@for $i from 1 through 5 {
+  .twoStory.ac#{$i} {
+    .title {
+      color: map-get($colors, $key: ac-#{$i});
+    }
+    &:hover,
+    &:focus-within {
+      .top {
+        background-color: map-get($colors, $key: ac-#{$i});
+      }
+      .title {
+        color: $light;
+      }
+    }
+  }
+}
