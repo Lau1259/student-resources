@@ -3,7 +3,6 @@ import { CategoryContext } from "../../store/category-context";
 import Container from "../../hoc/Container/Container";
 import Slider from "../../hoc/Slider/Slider";
 import Title from "../UI/Title/Title";
-import CategoryCircle from "../CategoryCircle/CategoryCircle";
 import { useState } from "react";
 import CategoryCircleList from "../CategoryCircleList/CategoryCircleList";
 import ResourceList from "../ResourceList/ResourceList";
