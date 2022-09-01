@@ -1,20 +1,40 @@
 @use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/animations";
+
 .twoStory {
-  min-width: 30%;
   transition: transform 0.75s ease-in-out;
   position: relative;
+  cursor: pointer;
+  min-width: 50vw;
+  aspect-ratio: 1/1.4;
+  display: flex;
+  flex-direction: column;
+  margin: auto 9%;
+
+  @include MQ(M) {
+    min-width: 27%;
+    margin: auto 3%;
+  }
+
   .top {
     width: 100%;
     height: 30%;
     background: $light;
     place-items: center;
     display: grid;
+    overflow: hidden;
+    position: relative;
+
     .title {
       margin: 0 auto;
       display: flex;
       font-weight: 900;
-      font-size: 1.25rem;
+      font-size: 1rem;
       text-transform: uppercase;
+      @include MQ(M) {
+        font-size: 1.25rem;
+      }
     }
   }
 
@@ -30,10 +50,10 @@
 
 .isEven {
   .top {
-    height: 40%;
+    height: 42%;
   }
   .bottom {
-    height: 60%;
+    height: 58%;
   }
 }
 
@@ -42,13 +62,58 @@
     .title {
       color: map-get($colors, $key: ac-#{$i});
     }
+    .top {
+      &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: -100%;
+        background-color: map-get($colors, $key: ac-#{$i});
+      }
+    }
     &:hover,
     &:focus-within {
       .top {
-        background-color: map-get($colors, $key: ac-#{$i});
+        .title {
+          animation: fade-in 0.5s ease-in-out 1;
+        }
+        &::before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          bottom: -100%;
+          background-color: map-get($colors, $key: ac-#{$i});
+        }
       }
       .title {
         color: $light;
+        z-index: 100;
+      }
+    }
+  }
+  .twoStory.animationEnabled {
+    .top {
+      .title {
+        animation: fade-toggle 0.45s ease-in-out 1;
+      }
+      &::before {
+        animation: slide-down 0.45s ease-in-out 1 forwards;
+      }
+    }
+    .bottom {
+      animation: bg-shrink 0.45s ease-in 1 forwards;
+    }
+    &:hover,
+    &:focus-within {
+      .top {
+        &::before {
+          animation: slide-up 0.45s ease-in 1 forwards;
+        }
+      }
+      .bottom {
+        animation: bg-grow 0.45s ease-in 1 forwards;
       }
     }
   }

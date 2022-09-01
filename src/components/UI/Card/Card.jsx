@@ -12,6 +12,7 @@ const Card = (props) => {
         transform: ` translateX(${props.position * -110}%)`,
         ...props.style,
       }}
+      {...props.shared}
     >
       {props.children}
     </div>

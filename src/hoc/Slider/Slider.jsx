@@ -7,9 +7,9 @@ import styles from "./Slider.module.scss";
 const Slider = (props) => {
   const theme = useContext(ThemeContext);
   const [position, setPosition] = useState(0);
-  const total = props.children ? props.children.length : 3;
-  const max = props.columns ? total - props.columns : total - 3;
-  const width = props.columns ? 100 / props.columns : 100 / 3;
+  let total = 0;
+  let max;
+  let width;
 
   const onSlide = (pos) => {
     if (pos < 0) return;
@@ -17,17 +17,8 @@ const Slider = (props) => {
     setPosition(pos);
   };
 
-  return (
-    <div className={styles.slider}>
-      <div className={styles.slideList}>
-        {React.Children.map(props.children, (child, index) =>
-          React.cloneElement(child, {
-            position,
-            width,
-            isEven: index % 2 === 0,
-          })
-        ).sort()}
-      </div>
+  const navigation = (
+    <>
       <button
         className={`${styles[theme.value]} ${styles.btn} ${styles.previousBtn}`}
         onClick={() => onSlide(position - 1)}
@@ -42,7 +33,26 @@ const Slider = (props) => {
       >
         &rArr;
       </button>
-      total: {total}, max: {max}, position: {position}, theme: {theme.value}
+    </>
+  );
+
+  return (
+    <div className={styles.slider}>
+      <div className={styles.slideList} style={props.style}>
+        {React.Children.map(props.children, (child, index) => {
+          total += child.props.items ? child.props.items.length : 0;
+          max = props.columns ? total - props.columns : total - 1;
+          width = props.columns ? 100 / props.columns : 100 / 3;
+          return React.cloneElement(child, {
+            position,
+            width,
+            isEven: index % 2 === 0,
+            tabIndex: 0,
+            shared: props.shared,
+          });
+        })}
+      </div>
+      {props.canSlide && navigation}
     </div>
   );
 };

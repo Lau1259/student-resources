@@ -1,0 +1,63 @@
+@use "../../styles/variables" as *;
+@use "../../styles/animations";
+
+.categoryCircle {
+  cursor: pointer;
+  .iconContainer {
+    width: 6vw;
+    aspect-ratio: 1/1;
+    position: relative;
+    &::after {
+      content: "";
+      z-index: -1;
+      margin: auto;
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      border-radius: 50%;
+    }
+    .icon {
+      max-width: 5vw;
+      aspect-ratio: 1/1;
+      border-radius: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin: auto;
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+  .label {
+    text-align: center;
+    padding: 0.5rem;
+  }
+}
+
+@for $i from 1 through 5 {
+  .ac#{$i} {
+    &.active .label {
+      color: map-get($colors, $key: ac-#{$i});
+      font-weight: $f-bold;
+    }
+    .iconContainer {
+      .icon {
+        background-color: map-get($colors, $key: ac-#{$i});
+      }
+      &:hover,
+      &:focus {
+        &::after {
+          background-color: scale-color(
+            map-get($colors, $key: ac-#{$i}),
+            $lightness: 25%
+          );
+          animation: pulse ease-in-out 1.25s infinite;
+        }
+      }
+    }
+  }
+}

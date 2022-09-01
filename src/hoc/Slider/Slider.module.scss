@@ -2,12 +2,12 @@
 @use "../../styles/mixins" as *;
 
 .slider {
-  max-width: 80vw;
+  max-width: 65vw;
   margin: 0 auto;
   padding: 2rem;
   position: relative;
-  @include MQ(M,max){
-    max-width: 65vw;
+  @include MQ(M) {
+    max-width: 800px;
   }
 }
 .slideList {
@@ -18,7 +18,6 @@
   overflow: hidden;
   position: relative;
   padding: 2rem 0;
-  gap: 3.5%;
 }
 
 .btn {
@@ -38,15 +37,24 @@
   &:disabled {
     visibility: hidden;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     opacity: 1;
     cursor: none;
   }
   &.previousBtn {
     left: -20px;
+    &:hover,
+    &:focus-within {
+      box-shadow: 4px 2px 5px $dark;
+    }
   }
   &.nextBtn {
     right: -20px;
+    &:hover,
+    &:focus-within {
+      box-shadow: -4px 2px 5px $dark;
+    }
   }
 }
 @for $i from 1 through 5 {
@@ -56,8 +64,12 @@
       color: map-get($colors, $key: ac-#{$i});
       background-color: scale-color($light, $lightness: 20%);
       border-color: map-get($colors, $key: ac-#{$i});
-      &.previousBtn{box-shadow: 4px 2px 5px  map-get($colors, $key: ac-#{$i});}
-      &.nextBtn{box-shadow: -4px 2px 5px map-get($colors, $key: ac-#{$i});}
+      &.previousBtn {
+        box-shadow: 4px 2px 5px map-get($colors, $key: ac-#{$i});
+      }
+      &.nextBtn {
+        box-shadow: -4px 2px 5px map-get($colors, $key: ac-#{$i});
+      }
     }
   }
 }

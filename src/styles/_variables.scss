@@ -1,11 +1,11 @@
 // Colors
 $dark: rgb(20, 20, 20);
-$light: rgb(220, 220, 220);
-$ac-1: rgb(175, 35, 21);
-$ac-2: rgb(209, 135, 43);
-$ac-3: rgb(60, 69, 148);
-$ac-4: rgb(101, 148, 60);
-$ac-5: rgb(137, 43, 209);
+$light: rgb(210, 210, 210);
+$ac-1: rgb(175, 35, 21);      // Technology
+$ac-2: rgb(209, 135, 43);     // Communication
+$ac-3: rgb(60, 69, 148);      // Business
+$ac-4: rgb(101, 148, 60);     // Family
+$ac-5: rgb(137, 43, 209);     // Health
 
 $colors: (
   dark: rgb(20, 20, 20),
@@ -22,5 +22,6 @@ $S: 32em;
 $L: 42em;
 
 // Font weights
+$f-light: 100;
 $f-regular: 400;
-$f-heading: 900;
+$f-bold: 900;

@@ -1,0 +1,55 @@
+@use "../../styles/variables" as *;
+
+.resourceList {
+  color: $dark;
+}
+
+
+.list {
+  border-radius: 1rem;
+  border: 1px solid scale-color($dark, $alpha: -60%);
+  padding: 2rem;
+  max-height: 20vh;
+  overflow-y: scroll;
+  box-shadow: 5px 8px 10px scale-color($dark, $alpha: -60%);
+  
+  
+  .listItem {
+    border-bottom: 1px solid scale-color($dark, $alpha: -80%);
+    font-size: 1.35rem;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+    header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .link {
+      text-decoration: none;
+      padding: 0.5rem;
+      display: block;
+      border-radius: 1rem;
+      border: 1px solid scale-color($dark, $alpha: -60%);
+      color: $dark;
+      width: fit-content;
+    }
+  }
+}
+
+.moreInformation {
+  padding: 1rem 0;
+  line-height: 2.5rem;
+}
+
+@for $i from 1 through 5 {
+  .ac#{$i} {
+    &:hover,
+    &:focus {
+      .link {
+        background-color: $dark;
+        color: map-get($colors, $key: ac-#{$i});
+        transition: 0.35s;
+      }
+    }
+  }
+}

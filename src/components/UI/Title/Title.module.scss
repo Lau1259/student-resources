@@ -1,0 +1,66 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/animations";
+
+.title {
+  font-size: 2.5rem;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  &::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    z-index: 100;
+    bottom: -0.5rem;
+    position: absolute;
+    animation: width-expand 0.45s 0.35s;
+  }
+}
+.center {
+  text-align: center;
+  &::after {
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+}
+.left {
+  text-align: left;
+  &::after {
+    left: 0;
+  }
+}
+.right {
+  text-align: right;
+  &::after {
+    right: 0;
+  }
+}
+.capitalize {
+  text-transform: capitalize;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+
+.light {
+  font-weight: $f-light;
+}
+.bold {
+  font-weight: $f-bold;
+}
+
+@for $i from 1 through 5 {
+  .ac#{$i} {
+    color: map-get($colors, $key: ac-#{$i});
+  }
+  .themedUnderline-ac#{$i} {
+    &::after {
+      background-color: map-get($colors, $key: ac-#{$i});
+    }
+  }
+}
